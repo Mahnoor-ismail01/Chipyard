@@ -53,9 +53,9 @@ class DigitalTopModule[+L <: DigitalTop](l: L) extends ChipyardSystemModule(l)
   with chipyard.example.CanHavePeripheryGCDModuleImp
   with freechips.rocketchip.util.DontTouch
   with chipyard.example.CanHavePeripheryJustReadModuleImp
-  with chipyard.example.CanHavePeripheryGCDModuleImp
+  
   with freechips.rocketchip.util.DontTouch
-  with chipyard.example.CanHavePeripheryJustReadModuleImp
+  
 
 // DOC include end: DigitalTop
 
