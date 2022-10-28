@@ -53,9 +53,9 @@ trait JustReadTopModule extends HasRegMap{
     val io:JustReadTopIO
     implicit val p: Parameters
     def params:JustReadParams
-    val isJustRead: RegInit(230.UInt(params.width.W)) 
+    val isJustRead: RegInit(230.U(params.width.W)) 
     val impl = Module(new JustReadMMIOChiselModule(params.width))
-    isJustRead:=impl.io.OutportToBeRead
+    isJustRead:=impl.io.OutportToBeRead //m
     regmap(
 		0x00 -> Seq(
 			RegField.r(params.width, isJustRead)) //r means read-only
