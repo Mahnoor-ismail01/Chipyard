@@ -259,9 +259,9 @@ class MulticlockAXIOverSerialConfig extends Config(
   // DOC include end: MulticlockAXIOverSerialConfig
 
   class JustReadTLRocketConfig extends Config(
-    new chipyard.config.AbstractConfig
+    new chipyard.config.AbstractConfig ++
     new freechips.rocketchip.subsystem.WithNBigCores(1) ++
-    new chipyard.example.JustReadTL(32)
+    new chipyard.example.WithJustRead
 
  )
 
