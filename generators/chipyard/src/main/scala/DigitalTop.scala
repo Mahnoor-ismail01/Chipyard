@@ -36,11 +36,9 @@ class DigitalTop(implicit p: Parameters) extends ChipyardSystem
   with constellation.soc.CanHaveGlobalNoC // Support instantiating a global NoC interconnect
   with chipyard.example.CanHavePeripheryJustRead
   with nvidia.blocks.dla.CanHavePeripheryNVDLA
-  
-
-{
+  {
   override lazy val module = new DigitalTopModule(this)
-}
+  }
 
 class DigitalTopModule[+L <: DigitalTop](l: L) extends ChipyardSystemModule(l)
   with testchipip.CanHaveTraceIOModuleImp
