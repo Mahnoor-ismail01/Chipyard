@@ -96,3 +96,6 @@ trait CanHavePeripheryJustRead { this: BaseSubsystem =>
 	}
 }
 
+class WithJustRead extends Config((site, here, up) => {
+  case JustReadKey => Some(JustReadParams)
+})
