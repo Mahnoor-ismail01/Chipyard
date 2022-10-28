@@ -8,8 +8,8 @@ import freechips.rocketchip.config.{Parameters, Field, Config}
 import freechips.rocketchip.diplomacy._
 import freechips.rocketchip.regmapper.{HasRegMap, RegField}
 import freechips.rocketchip.tilelink._
-import freechips.rocketchip.util.UintIsOneOf
 
+import freechips.rocketchip.util.UIntIsOneOf
 //Parameters
 //case class 
 
@@ -23,7 +23,7 @@ case object JustReadKey extends Field[Option[JustReadParams]](None)
 
 //IO Ports
 
-class JustReadIO(val w:int) extends Bundle{
+class JustReadIO(val w:Int) extends Bundle{
     val outPortToBeRead = Output(UInt(w.W))
 
 }
@@ -39,7 +39,7 @@ trait HasJustReadIO extends BaseModule{
 
 class JustReadMMIOChiselModule(val w:Int) extends Module with HasJustReadIO{
     val a = RegInit(230.U(w.W))
-    io.OutportToBeRead:=a
+    io.outportToBeRead:=a
 } 
 //memory mappy trait
 
@@ -55,7 +55,7 @@ trait JustReadTopModule extends HasRegMap{
     def params:JustReadParams
     val isJustRead = RegInit(230.U(params.width.W)) 
     val impl = Module(new JustReadMMIOChiselModule(params.width))
-    isJustRead:=impl.io.OutportToBeRead //m
+    isJustRead:=impl.io.outportToBeRead //m
     regmap(
 		0x00 -> Seq(
 			RegField.r(params.width, isJustRead)) //r means read-only
