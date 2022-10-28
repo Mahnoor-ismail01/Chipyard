@@ -35,7 +35,6 @@ class DigitalTop(implicit p: Parameters) extends ChipyardSystem
   with fftgenerator.CanHavePeripheryFFT // Enables optionally having an MMIO-based FFT block
   with constellation.soc.CanHaveGlobalNoC // Support instantiating a global NoC interconnect
   with chipyard.example.CanHavePeripheryJustRead
-  
   {
   override lazy val module = new DigitalTopModule(this)
   }
