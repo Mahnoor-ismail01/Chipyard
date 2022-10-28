@@ -35,6 +35,9 @@ class DigitalTop(implicit p: Parameters) extends ChipyardSystem
   with fftgenerator.CanHavePeripheryFFT // Enables optionally having an MMIO-based FFT block
   with constellation.soc.CanHaveGlobalNoC // Support instantiating a global NoC interconnect
   with chipyard.example.CanHavePeripheryJustRead
+  with nvidia.blocks.dla.CanHavePeripheryNVDLA
+  with chipyard.example.CanHavePeripheryJustRead
+
 {
   override lazy val module = new DigitalTopModule(this)
 }
@@ -50,20 +53,11 @@ class DigitalTopModule[+L <: DigitalTop](l: L) extends ChipyardSystemModule(l)
   with chipyard.example.CanHavePeripheryGCDModuleImp
   with freechips.rocketchip.util.DontTouch
   with chipyard.example.CanHavePeripheryJustReadModuleImp
-// DOC include end: DigitalTop
-
-class DigitalTop(implicit p: Parameters) extends System
-  with testchipip.CanHaveTraceIO
-	// a dozen lines omitted
-  with nvidia.blocks.dla.CanHavePeripheryNVDLA
-  with chipyard.example.CanHavePeripheryJustRead
-{
-  override lazy val module = new DigitalTopModule(this)
-}
-
-class DigitalTopModule[+L <: DigitalTop](l: L) extends SystemModule(l)
-  with testchipip.CanHaveTraceIOModuleImp
- 	// a dozen lines omitted
   with chipyard.example.CanHavePeripheryGCDModuleImp
   with freechips.rocketchip.util.DontTouch
   with chipyard.example.CanHavePeripheryJustReadModuleImp
+
+// DOC include end: DigitalTop
+
+
+
