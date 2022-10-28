@@ -24,6 +24,7 @@ case object JustReadKey extends Field[Option[JustReadParams]](None)
 //IO Ports
 
 class JustReadIO(val w:Int) extends Bundle{
+    
     val outPortToBeRead = Output(UInt(w.W))
 
 }
@@ -39,7 +40,7 @@ trait HasJustReadIO extends BaseModule{
 
 class JustReadMMIOChiselModule(val w:Int) extends Module with HasJustReadIO{
     val a = RegInit(230.U(w.W))
-    io.outportToBeRead:=a
+    io.outPortToBeRead := a
 } 
 //memory mappy trait
 
@@ -55,7 +56,7 @@ trait JustReadTopModule extends HasRegMap{
     def params:JustReadParams
     val isJustRead = RegInit(230.U(params.width.W)) 
     val impl = Module(new JustReadMMIOChiselModule(params.width))
-    isJustRead:=impl.io.outportToBeRead //m
+    isJustRead:=impl.io.outportToBeRead
     regmap(
 		0x00 -> Seq(
 			RegField.r(params.width, isJustRead)) //r means read-only
