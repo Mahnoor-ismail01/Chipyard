@@ -6,25 +6,8 @@ import freechips.rocketchip.diplomacy.{AsynchronousCrossing}
 // --------------
 // Rocket Configs
 // --------------
-class JustReadTLRocketConfig extends Config(
-  new chipyard.iobinders.WithUARTAdapter ++
-  new chipyard.iobinders.WithTieOffInterrupts ++
-  new chipyard.iobinders.WithBlackBoxSimMem ++
-  new chipyard.iobinders.WithTiedOffDebug ++
-  new chipyard.iobinders.WithSimSerial ++
-  new testchipip.WithTSI ++
-  new chipyard.config.WithUART ++
-  new chipyard.config.WithBootROM ++
-  new chipyard.config.WithL2TLBs(1024) ++
-  new chipyard.example.WithJustRead ++ // Use our MMIO peripheral, connect TL
-  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
-  new freechips.rocketchip.subsystem.WithNoSlavePort ++
-  new freechips.rocketchip.subsystem.WithInclusiveCache ++
-  new freechips.rocketchip.subsystem.WithNExtTopInterrupts(0) ++
-  new freechips.rocketchip.subsystem.WithNBigCores(1) ++
-  new freechips.rocketchip.subsystem.WithCoherentBusTopology ++
-  new freechips.rocketchip.system.BaseConfig)
-  
+
+
 class RocketConfig extends Config(
   new freechips.rocketchip.subsystem.WithNBigCores(1) ++         // single rocket-core
   new chipyard.config.AbstractConfig)
@@ -273,4 +256,23 @@ class MulticlockAXIOverSerialConfig extends Config(
 
   new freechips.rocketchip.subsystem.WithNBigCores(2) ++
   new chipyard.config.AbstractConfig)
+  
+  class JustReadTLRocketConfig extends Config(
+  new chipyard.iobinders.WithUARTAdapter ++
+  new chipyard.iobinders.WithTieOffInterrupts ++
+  new chipyard.iobinders.WithBlackBoxSimMem ++
+  new chipyard.iobinders.WithTiedOffDebug ++
+  new chipyard.iobinders.WithSimSerial ++
+  new testchipip.WithTSI ++
+  new chipyard.config.WithUART ++
+  new chipyard.config.WithBootROM ++
+  new chipyard.config.WithL2TLBs(1024) ++
+  new chipyard.example.WithJustRead ++ // Use our MMIO peripheral, connect TL
+  new freechips.rocketchip.subsystem.WithNoMMIOPort ++
+  new freechips.rocketchip.subsystem.WithNoSlavePort ++
+  new freechips.rocketchip.subsystem.WithInclusiveCache ++
+  new freechips.rocketchip.subsystem.WithNExtTopInterrupts(0) ++
+  new freechips.rocketchip.subsystem.WithNBigCores(1) ++
+  new freechips.rocketchip.subsystem.WithCoherentBusTopology ++
+  new freechips.rocketchip.system.BaseConfig)
 // DOC include end: MulticlockAXIOverSerialConfig
